@@ -4,139 +4,256 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prakash Misthan Bhandaar | Iconic Samosas & Sweets</title>
+    
+    <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
     <style>
         body { font-family: 'Inter', sans-serif; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes slowZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+        .hero-zoom { animation: slowZoom 25s infinite alternate linear; }
+        
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #fff7ed; }
+        ::-webkit-scrollbar-thumb { background: #ea580c; border-radius: 10px; }
     </style>
 </head>
-<body class="bg-[#FFFDF9] text-gray-900">
 
-    <nav class="fixed w-full bg-white/90 backdrop-blur-md z-50 shadow-sm">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-black text-orange-700 tracking-tight">Prakash Misthan Bhandaar</h1>
-            <div class="hidden md:flex space-x-8 font-semibold text-sm uppercase tracking-widest">
-                <a href="#menu" class="hover:text-orange-600 transition">Our Menu</a>
-                <a href="#gallery" class="hover:text-orange-600 transition">Gallery</a>
-                <a href="#testimonials" class="hover:text-orange-600 transition">Reviews</a>
-                <a href="#contact" class="hover:text-orange-600 transition">Contact</a>
+<body class="bg-[#FFFBF5] text-slate-900 selection:bg-orange-200">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-lg border-b border-orange-100">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-black text-orange-700 tracking-tighter">
+                Prakash Misthan Bhandaar
+            </h1>
+            
+            <div class="hidden md:flex items-center space-x-10 text-sm font-bold uppercase tracking-widest text-slate-600">
+                <a href="#menu" class="hover:text-orange-600 transition-colors">Menu</a>
+                <a href="#about" class="hover:text-orange-600 transition-colors">Our Story</a>
+                <a href="#contact" class="bg-orange-600 text-white px-6 py-2.5 rounded-full hover:bg-orange-700 transition-all shadow-md active:scale-95">
+                    Inquiry
+                </a>
             </div>
-            <button class="md:hidden text-orange-700">
+
+            <button id="menuBtn" class="md:hidden text-orange-700 p-2" aria-label="Toggle Menu">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
                 </svg>
             </button>
         </div>
+        
+        <!-- Mobile Nav -->
+        <div id="mobileMenu" class="hidden bg-white border-b border-orange-100 px-6 py-6 space-y-4 md:hidden">
+            <a href="#menu" class="block font-bold text-lg text-slate-700 hover:text-orange-600">The Menu</a>
+            <a href="#about" class="block font-bold text-lg text-slate-700 hover:text-orange-600">Our Story</a>
+            <a href="#contact" class="block font-bold text-lg text-orange-600">Contact Us</a>
+        </div>
     </nav>
 
-    <section class="relative h-[90vh] flex items-center justify-center overflow-hidden">
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center text-center overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1601050690597-df056fb04791?auto=format&fit=crop&q=80&w=2000" 
-                 alt="Hot Samosas" class="w-full h-full object-cover scale-105 animate-[pulse_10s_infinite]">
-            <div class="absolute inset-0 bg-black/40"></div>
+            <!-- Hero BG Image - Reliable Samosa Background -->
+            <img 
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Samosachutney.jpg/1280px-Samosachutney.jpg" 
+                alt="Fresh Hot Samosas Background" 
+                class="w-full h-full object-cover hero-zoom"
+            />
+            <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black/80"></div>
         </div>
-        <div class="relative z-10 text-center text-white px-4">
-            <h2 class="text-6xl md:text-8xl font-black mb-6">Legendary Taste.</h2>
-            <p class="text-xl md:text-2xl font-light mb-10 max-w-2xl mx-auto">Discover the crunchiest samosas and finest traditional sweets in the heart of the neighborhood.</p>
-            <a href="#menu" class="bg-orange-600 hover:bg-orange-500 text-white px-10 py-4 rounded-full text-lg font-bold transition-all transform hover:scale-105 shadow-xl">Explore Menu</a>
-        </div>
-    </section>
 
-    <section id="menu" class="py-24 container mx-auto px-6">
-        <div class="text-center mb-16">
-            <span class="text-orange-600 font-bold tracking-widest uppercase text-sm">Delicious Offerings</span>
-            <h3 class="text-4xl md:text-5xl font-bold mt-2">Crafted with Tradition</h3>
-        </div>
-        
-        <div class="grid md:grid-cols-3 gap-10">
-            <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all">
-                <div class="h-64 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1601050690597-df056fb04791?q=80&w=800" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                </div>
-                <div class="p-8">
-                    <div class="flex justify-between items-center mb-4">
-                        <h4 class="text-2xl font-bold">Famous Samosas</h4>
-                        <span class="bg-orange-100 text-orange-700 text-xs font-bold px-2 py-1 rounded">MOST POPULAR</span>
-                    </div>
-                    <p class="text-gray-600">Our signature spiced potato filling wrapped in a perfectly crisp, golden crust.</p>
-                </div>
-            </div>
-
-            <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all">
-                <div class="h-64 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1589119908995-c6837fa14848?q=80&w=800" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                </div>
-                <div class="p-8">
-                    <h4 class="text-2xl font-bold mb-4">Traditional Sweets</h4>
-                    <p class="text-gray-600">From syrupy Gulab Jamuns to crispy Jalebis, made fresh every single morning.</p>
-                </div>
-            </div>
-
-            <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all">
-                <div class="h-64 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=800" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                </div>
-                <div class="p-8">
-                    <h4 class="text-2xl font-bold mb-4">Chilled Beverages</h4>
-                    <p class="text-gray-600">The perfect companion to our spicy snacks. Ice-cold and refreshing.</p>
-                </div>
+        <div class="relative z-10 px-6 max-w-4xl mt-16">
+            <span class="inline-block text-orange-400 font-bold tracking-[0.3em] uppercase text-sm mb-4">Established Excellence</span>
+            <h1 class="text-6xl md:text-8xl font-black text-white mb-8 leading-tight">
+                Legendary Taste.
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-200 mb-12 font-light max-w-2xl mx-auto leading-relaxed">
+                Hand-crafted samosas and traditional sweets served fresh with recipes passed down through generations.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <a href="#menu" class="bg-orange-600 hover:bg-orange-500 text-white px-10 py-5 rounded-full font-bold text-lg shadow-2xl transition-all hover:-translate-y-1">
+                    Explore the Menu
+                </a>
+                <a href="#contact" class="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/30 px-10 py-5 rounded-full font-bold text-lg transition-all">
+                    Bulk Orders
+                </a>
             </div>
         </div>
     </section>
 
-    <section id="testimonials" class="bg-orange-50 py-24">
-        <div class="container mx-auto px-6">
-            <h3 class="text-center text-4xl font-bold mb-16">What Our Locals Say</h3>
-            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <div class="bg-white p-8 rounded-xl shadow-sm italic text-gray-700">
-                    "The samosas here are unparalleled. Every bite takes me back to childhood. A must-visit!"
-                    <p class="mt-4 font-bold not-italic text-orange-700">— Rajesh Kumar</p>
+    <!-- Missing About Section Added -->
+    <section id="about" class="py-24 bg-orange-50 px-6">
+        <div class="max-w-4xl mx-auto text-center reveal">
+            <span class="text-orange-500 font-bold tracking-widest uppercase text-sm mb-4 inline-block">Our Story</span>
+            <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-6">Generations of Sweetness</h2>
+            <p class="text-lg text-slate-600 leading-relaxed">
+                Founded in the heart of the neighborhood, Prakash Misthan Bhandaar has been serving authentic, hand-crafted snacks and sweets for over three decades. Our secret lies in our uncompromising commitment to pure desi ghee, fresh daily ingredients, and our legendary family recipes.
+            </p>
+        </div>
+    </section>
+
+    <!-- Featured Menu -->
+    <section id="menu" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl md:text-6xl font-black text-slate-900 mb-6">Our Specialties</h2>
+                <p class="text-lg text-slate-500 max-w-2xl mx-auto">Every item is prepared daily using pure ingredients to ensure the authentic flavor that our customers love.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-12">
+                <!-- Samosa Card -->
+                <div class="reveal group bg-white rounded-[2rem] shadow-sm hover:shadow-xl transition-all duration-500 border-t-8 border-t-orange-600 border border-orange-50 p-12 text-center flex flex-col justify-between h-full">
+                    <div>
+                        <div class="mb-6">
+                            <span class="bg-red-600 text-white text-[10px] font-black px-4 py-2 rounded-full uppercase tracking-widest shadow-sm inline-block">Most Popular</span>
+                        </div>
+                        <h3 class="text-4xl font-bold mb-6 text-slate-900">Famous Samosas</h3>
+                        <p class="text-slate-500 leading-relaxed mb-8">Crispy, golden-brown crust filled with our secret spiced potato mash. Served with tangy tamarind chutney.</p>
+                    </div>
+                    <span class="text-orange-600 font-bold text-2xl">₹20 / piece</span>
                 </div>
-                <div class="bg-white p-8 rounded-xl shadow-sm italic text-gray-700">
-                    "I order bulk for all my office parties. They never fail on quality and freshness."
-                    <p class="mt-4 font-bold not-italic text-orange-700">— Anjali Sharma</p>
+
+                <!-- Gulab Jamun Card -->
+                <div class="reveal group bg-white rounded-[2rem] shadow-sm hover:shadow-xl transition-all duration-500 border-t-8 border-t-orange-600 border border-orange-50 p-12 text-center flex flex-col justify-between h-full" style="transition-delay: 200ms;">
+                    <div class="mt-8">
+                        <h3 class="text-4xl font-bold mb-6 text-slate-900">Gulab Jamun</h3>
+                        <p class="text-slate-500 leading-relaxed mb-8">Traditional milk-solid spheres dipped in aromatic saffron syrup. Made with pure desi ghee every morning.</p>
+                    </div>
+                    <span class="text-orange-600 font-bold text-2xl">Fresh Daily</span>
+                </div>
+
+                <!-- Drinks Card -->
+                <div class="reveal group bg-white rounded-[2rem] shadow-sm hover:shadow-xl transition-all duration-500 border-t-8 border-t-orange-600 border border-orange-50 p-12 text-center flex flex-col justify-between h-full" style="transition-delay: 400ms;">
+                    <div class="mt-8">
+                        <h3 class="text-4xl font-bold mb-6 text-slate-900">Cool Refreshers</h3>
+                        <p class="text-slate-500 leading-relaxed mb-8">Ice-cold beverages like traditional sweet Lassi to balance the spice of our snacks. Perfect for any afternoon.</p>
+                    </div>
+                    <span class="text-orange-600 font-bold text-2xl">Chilled</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-24 container mx-auto px-6">
-        <div class="bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row">
-            <div class="md:w-1/2 bg-orange-600 p-12 text-white flex flex-col justify-center">
-                <h3 class="text-4xl font-bold mb-6">Bulk Orders & Catering</h3>
-                <p class="text-lg opacity-90 mb-8">Planning an event? Let us handle the snacks. We offer special rates for orders over 50 pieces.</p>
-                <div class="space-y-4">
-                    <p class="flex items-center"><span class="font-bold w-24">Address:</span> Main Market Road, Near Park</p>
-                    <p class="flex items-center"><span class="font-bold w-24">Hours:</span> 8:00 AM - 10:00 PM</p>
+    <!-- Bulk Orders / Contact -->
+    <section id="contact" class="py-32 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
+            <div class="reveal">
+                <span class="text-orange-500 font-bold tracking-widest uppercase text-sm mb-4 inline-block">Catering & Parties</span>
+                <h2 class="text-5xl md:text-7xl font-bold mb-8">Large Orders? We've Got You.</h2>
+                <p class="text-xl text-slate-400 mb-12 leading-relaxed">Whether it's an office party, a wedding, or a small gathering, we handle bulk orders with the same care and freshness.</p>
+                
+                <div class="space-y-6 text-lg">
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-orange-600 p-2 rounded-lg mt-1">📍</div>
+                        <div>
+                            <p class="font-bold">Our Location</p>
+                            <p class="text-slate-400">Main Market Road, Prakash Plaza, Bengaluru</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-orange-600 p-2 rounded-lg mt-1">📞</div>
+                        <div>
+                            <p class="font-bold">Phone Number</p>
+                            <p class="text-slate-400">+91 98765 43210</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="md:w-1/2 p-12">
-                <form onsubmit="event.preventDefault(); alert('Request sent! We will contact you shortly.');">
-                    <div class="mb-6">
-                        <label class="block text-sm font-bold mb-2 uppercase tracking-wide">Your Name</label>
-                        <input type="text" required class="w-full border-b-2 border-gray-200 py-3 focus:border-orange-600 outline-none transition" placeholder="Enter name">
+
+            <div class="reveal bg-white p-12 rounded-[2.5rem] shadow-2xl text-slate-900">
+                <form id="contactForm" class="space-y-6">
+                    <div>
+                        <label for="userName" class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-2">Your Name</label>
+                        <input type="text" id="userName" required class="w-full bg-slate-50 border-none rounded-xl p-4 focus:ring-2 focus:ring-orange-600 outline-none transition" placeholder="Enter your full name">
                     </div>
-                    <div class="mb-6">
-                        <label class="block text-sm font-bold mb-2 uppercase tracking-wide">Phone Number</label>
-                        <input type="tel" required class="w-full border-b-2 border-gray-200 py-3 focus:border-orange-600 outline-none transition" placeholder="Contact number">
+                    <div>
+                        <label for="requirement" class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-2">Requirement</label>
+                        <select id="requirement" required class="w-full bg-slate-50 border-none rounded-xl p-4 focus:ring-2 focus:ring-orange-600 outline-none transition">
+                            <option value="samosa">Bulk Samosa Order (>50 pcs)</option>
+                            <option value="sweets">Sweet Box Selection</option>
+                            <option value="catering">Event Catering</option>
+                            <option value="general">General Inquiry</option>
+                        </select>
                     </div>
-                    <div class="mb-8">
-                        <label class="block text-sm font-bold mb-2 uppercase tracking-wide">Inquiry Details</label>
-                        <textarea rows="3" class="w-full border-b-2 border-gray-200 py-3 focus:border-orange-600 outline-none transition" placeholder="How many samosas do you need?"></textarea>
+                    <div>
+                        <label for="message" class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-2">Message</label>
+                        <textarea id="message" rows="4" required class="w-full bg-slate-50 border-none rounded-xl p-4 focus:ring-2 focus:ring-orange-600 outline-none transition" placeholder="Tell us about your event..."></textarea>
                     </div>
-                    <button class="w-full bg-gray-900 text-white py-4 rounded-lg font-bold hover:bg-black transition transform active:scale-95 shadow-lg">Send Inquiry</button>
+                    <button type="submit" class="w-full bg-orange-600 text-white py-5 rounded-xl font-black uppercase tracking-widest hover:bg-orange-700 transition transform active:scale-95">
+                        Submit Inquiry
+                    </button>
+                    <div id="successMsg" class="hidden mt-4 p-4 bg-green-100 text-green-700 rounded-xl text-center font-bold">
+                        Inquiry Sent! We will contact you shortly.
+                    </div>
                 </form>
             </div>
         </div>
     </section>
 
-    <footer class="bg-gray-900 text-white py-12 text-center">
-        <div class="container mx-auto px-6">
-            <p class="text-2xl font-black text-orange-500 mb-4">Prakash Misthan Bhandaar</p>
-            <p class="opacity-50 text-sm">© 2026 Crafted for IIM Bangalore Website Development Course.</p>
-        </div>
+    <footer class="bg-white py-12 border-t border-orange-100 text-center">
+        <p class="text-2xl font-black text-orange-700 mb-4">Prakash Misthan Bhandaar</p>
+        <p class="text-slate-400 text-sm tracking-widest uppercase">Handcrafted for IIM Bangalore Final Project</p>
+        <div class="mt-8 text-[10px] text-slate-300">© 2026</div>
     </footer>
 
+    <script>
+        // Scroll reveal logic
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        reveals.forEach(el => observer.observe(el));
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Bug Fix: Close mobile menu when a link inside it is clicked
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Form submission handler
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const successBox = document.getElementById('successMsg');
+            successBox.classList.remove('hidden');
+            e.target.reset();
+            setTimeout(() => {
+                successBox.classList.add('hidden');
+            }, 5000);
+        });
+    </script>
 </body>
 </html>
